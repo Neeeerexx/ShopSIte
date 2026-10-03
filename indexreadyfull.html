@@ -128,7 +128,7 @@ body{background:var(--bg);color:#f3f4f6;font-family:'Plus Jakarta Sans',sans-ser
         🛒 <span class="hidden sm:inline" data-i="cart_btn"></span>
         <span id="cartCount" class="absolute -top-2 -right-2 bg-[var(--accent)] text-[#07070a] text-xs font-black w-6 h-6 rounded-full flex items-center justify-center hidden">0</span>
       </button>
-      <button onclick="openAdminModal()" class="mag bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 px-3 sm:px-4 py-2.5 rounded-xl font-bold hover:bg-[var(--accent)] hover:text-[#07070a] transition-colors text-sm">⚙️ <span class="hidden sm:inline" data-i="admin_title">Admin</span></button>
+      <button onclick="openAdminModal()" class="mag bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 px-3 sm:px-4 py-2.5 rounded-xl font-bold hover:bg-[var(--accent)] hover:text-[#07070a] transition-colors text-sm">⚙️ <span class="hidden sm:inline">Admin</span></button>
     </div>
   </div>
 </header>
@@ -216,7 +216,7 @@ body{background:var(--bg);color:#f3f4f6;font-family:'Plus Jakarta Sans',sans-ser
 
 <footer class="border-t border-white/10 py-8 px-6 bg-[#050507]"><div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
   <div>© 2026 50centcollection.az</div>
-  <div class="flex items-center gap-6"><span data-i="hours_text"></span><button onclick="openAdminModal()" class="hover:text-white transition-colors"><span data-i="admin_title">Admin</span> ⚙️</button></div></div></footer>
+  <div class="flex items-center gap-6"><span data-i="hours_text"></span><button onclick="openAdminModal()" class="hover:text-white transition-colors">Admin ⚙️</button></div></div></footer>
 
 <div id="productModal" class="modal-overlay"><div class="modal-content relative">
   <button onclick="closeModals()" class="absolute top-5 right-5 bg-white/10 hover:bg-white/20 w-10 h-10 rounded-full font-bold z-10" aria-label="Close">✕</button>
@@ -234,8 +234,8 @@ body{background:var(--bg);color:#f3f4f6;font-family:'Plus Jakarta Sans',sans-ser
 
 <div id="adminModal" class="modal-overlay"><div class="modal-content relative" style="max-width:72rem">
   <div class="flex flex-wrap justify-between items-center gap-3 mb-5">
-    <h3 class="font-heading text-xl font-bold">⚙️ <span data-i="admin_panel_head">Admin Panel</span></h3>
-    <div class="flex items-center gap-3"><span id="admUser" class="mono text-xs text-gray-400 hidden sm:inline"></span><button id="adminLogoutBtn" onclick="adminLogout()" class="hidden ab r" data-i="logout_btn">Exit</button><button onclick="closeModals()" class="bg-white/10 w-9 h-9 rounded-full font-bold" aria-label="Close">✕</button></div>
+    <h3 class="font-heading text-xl font-bold">⚙️ Admin Panel</h3>
+    <div class="flex items-center gap-3"><span id="admUser" class="mono text-xs text-gray-400 hidden sm:inline"></span><button id="adminLogoutBtn" onclick="adminLogout()" class="hidden ab r">Выйти</button><button onclick="closeModals()" class="bg-white/10 w-9 h-9 rounded-full font-bold" aria-label="Close">✕</button></div>
   </div>
   <form id="adminLoginForm" onsubmit="adminLogin(event)" class="max-w-sm mx-auto space-y-4 py-8">
     <div class="text-center text-5xl mb-2">🔐</div>
@@ -247,56 +247,34 @@ body{background:var(--bg);color:#f3f4f6;font-family:'Plus Jakarta Sans',sans-ser
   <div id="adminDashboard" class="hidden">
     <datalist id="tagList"></datalist>
     <nav class="flex gap-1 overflow-x-auto pb-3 mb-5 border-b border-white/10">
-      <button class="at on" data-t="dash" onclick="setTab('dash')">📊 <span data-i="tab_dash">Обзор</span></button>
-      <button class="at" data-t="list" onclick="setTab('list')">📦 <span data-i="tab_list">Товары</span> <span id="admBadge" class="mono text-[10px] bg-white/10 px-1.5 rounded">0</span></button>
-      <button class="at" data-t="edit" onclick="setTab('edit')">➕ <span data-i="tab_edit">Добавить / изменить</span></button>
-      <button class="at" data-t="quick" onclick="setTab('quick')">⚡ <span data-i="tab_quick">Быстрая загрузка</span></button>
-      <button class="at" data-t="cats" onclick="setTab('cats')">🏷️ <span data-i="tab_cats">Категории</span></button>
-      <button class="at" data-t="tools" onclick="setTab('tools')">🧰 <span data-i="tab_tools">Инструменты</span></button>
+      <button class="at on" data-t="dash" onclick="setTab('dash')">📊 Обзор</button>
+      <button class="at" data-t="list" onclick="setTab('list')">📦 Товары <span id="admBadge" class="mono text-[10px] bg-white/10 px-1.5 rounded">0</span></button>
+      <button class="at" data-t="edit" onclick="setTab('edit')">➕ Добавить / изменить</button>
+      <button class="at" data-t="quick" onclick="setTab('quick')">⚡ Быстрая загрузка</button>
+      <button class="at" data-t="cats" onclick="setTab('cats')">🏷️ Категории</button>
+      <button class="at" data-t="tools" onclick="setTab('tools')">🧰 Инструменты</button>
     </nav>
 
     <section class="apanel on" data-p="dash" id="pDash"></section>
 
     <section class="apanel" data-p="list">
       <div class="flex flex-wrap gap-2 mb-3">
-        <input id="lq" class="ai flex-1 min-w-[160px]" data-ph="adm_search_ph" oninput="adm.q=this.value;rows()">
+        <input id="lq" class="ai flex-1 min-w-[160px]" placeholder="🔍 Поиск по названию, категории, описанию  ( / )" oninput="adm.q=this.value;rows()">
         <select id="lcat" class="ai" onchange="adm.cat=this.value;rows()"></select>
-        <select id="lflt" class="ai" onchange="adm.flt=this.value;rows()">
-          <option value="" data-i="flt_all">Все товары</option>
-          <option value="new" data-i="flt_new">Только новинки</option>
-          <option value="old" data-i="flt_old">Не новинки</option>
-          <option value="nodesc" data-i="flt_nodesc">Без описания</option>
-        </select>
-        <select id="lsort" class="ai" onchange="adm.sort=this.value;rows()">
-          <option value="def" data-i="sort_def_adm">Как на сайте</option>
-          <option value="name" data-i="sort_name_adm">Название А–Я</option>
-          <option value="asc" data-i="sort_asc_adm">Цена ↑</option>
-          <option value="desc" data-i="sort_desc_adm">Цена ↓</option>
-        </select>
-        <button class="ab g" onclick="resetProductForm();setTab('edit')" data-i="btn_new">➕ Новый</button>
+        <select id="lflt" class="ai" onchange="adm.flt=this.value;rows()"><option value="">Все товары</option><option value="new">Только новинки</option><option value="old">Не новинки</option><option value="nodesc">Без описания</option></select>
+        <select id="lsort" class="ai" onchange="adm.sort=this.value;rows()"><option value="def">Как на сайте</option><option value="name">Название А–Я</option><option value="asc">Цена ↑</option><option value="desc">Цена ↓</option></select>
+        <button class="ab g" onclick="resetProductForm();setTab('edit')">➕ Новый</button>
       </div>
       <div id="bulk" class="hidden ac mb-3 flex flex-wrap items-center gap-2 border-[var(--accent)]/40">
-        <b class="text-sm"><span data-i="selected_lbl">Выбрано:</span> <span id="bulkN">0</span></b>
-        <button class="ab" onclick="bulkSet({isNew:true},t('msg_new_on'))" data-i="btn_new_on">NEW вкл</button>
-        <button class="ab" onclick="bulkSet({isNew:false},t('msg_new_off'))" data-i="btn_new_off">NEW выкл</button>
-        <input id="bulkTag" list="tagList" class="ai w-36" data-ph="f_tag_ph">
-        <button class="ab" onclick="bulkTag()" data-i="btn_apply">Применить</button>
-        <input id="bulkPct" type="number" step="1" class="ai w-24" placeholder="%">
-        <button class="ab" onclick="bulkPct()">± %</button>
-        <button class="ab r" onclick="deleteProducts(ids())" data-i="btn_delete">🗑️ Удалить</button>
-        <button class="ab ml-auto" onclick="sel.clear();rows()" data-i="btn_deselect">Снять</button>
+        <b class="text-sm">Выбрано: <span id="bulkN">0</span></b>
+        <button class="ab" onclick="bulkSet({isNew:true},'Помечено NEW')">NEW вкл</button><button class="ab" onclick="bulkSet({isNew:false},'NEW снят')">NEW выкл</button>
+        <input id="bulkTag" list="tagList" class="ai w-36" placeholder="Категория"><button class="ab" onclick="bulkTag()">Применить</button>
+        <input id="bulkPct" type="number" step="1" class="ai w-24" placeholder="Цена %"><button class="ab" onclick="bulkPct()">± %</button>
+        <button class="ab r" onclick="deleteProducts(ids())">🗑️ Удалить</button><button class="ab ml-auto" onclick="sel.clear();rows()">Снять</button>
       </div>
-      <div class="text-xs text-gray-500 mb-2 flex justify-between"><span id="lCount"></span><span data-i="table_hint">Цену можно менять прямо в таблице</span></div>
+      <div class="text-xs text-gray-500 mb-2 flex justify-between"><span id="lCount"></span><span>Цену можно менять прямо в таблице, NEW — переключателем</span></div>
       <div class="overflow-x-auto max-h-[55vh] overflow-y-auto"><table class="w-full text-sm text-left">
-        <thead class="text-xs text-gray-500 sticky top-0 bg-[#101017]"><tr>
-          <th class="py-2 pl-2"><input type="checkbox" id="lAll" onchange="selAll(this.checked)" class="w-4 h-4 accent-[#00ff66]"></th>
-          <th></th>
-          <th data-i="th_product">Товар</th>
-          <th class="hidden sm:table-cell" data-i="th_cat">Категория</th>
-          <th data-i="th_price">Цена ₼</th>
-          <th>NEW</th>
-          <th></th>
-        </tr></thead>
+        <thead class="text-xs text-gray-500 sticky top-0 bg-[#101017]"><tr><th class="py-2 pl-2"><input type="checkbox" id="lAll" onchange="selAll(this.checked)" class="w-4 h-4 accent-[#00ff66]"></th><th></th><th>Товар</th><th class="hidden sm:table-cell">Категория</th><th>Цена ₼</th><th>NEW</th><th></th></tr></thead>
         <tbody id="lRows"></tbody></table></div>
     </section>
 
@@ -306,29 +284,29 @@ body{background:var(--bg);color:#f3f4f6;font-family:'Plus Jakarta Sans',sans-ser
         <div class="lg:col-span-2 space-y-3">
           <label id="drop" class="drop block min-h-[280px] flex flex-col items-center justify-center" for="formFile">
             <img id="preview" class="hidden absolute inset-0 w-full h-full object-cover" alt="">
-            <div id="dropText" class="relative"><div class="text-4xl mb-2">📸</div><div class="font-bold text-sm" data-i="drop_title"></div><div class="text-xs text-gray-400 mt-1" data-i="drop_hint"></div></div>
+            <div id="dropText" class="relative"><div class="text-4xl mb-2">📸</div><div class="font-bold text-sm">Перетащите фото, выберите файл или нажмите Ctrl+V</div><div class="text-xs text-gray-400 mt-1">JPG, PNG, WEBP — сжимается автоматически</div></div>
             <input type="file" id="formFile" accept="image/*" class="sr-only">
           </label>
           <div id="imgInfo" class="mono text-[11px] text-gray-400"></div>
           <div class="flex flex-wrap gap-2 items-center">
-            <button type="button" class="ab" onclick="rotImg()" data-i="btn_rotate">⟳ Повернуть</button>
-            <label class="ab"><input type="checkbox" id="cropOn" checked class="accent-[#00ff66]" onchange="refreshPreview()"> <span data-i="crop_45">Кадр 4:5</span></label>
-            <button type="button" id="clearImg" class="ab r hidden" onclick="clearImage()" data-i="remove_img">Убрать фото</button>
+            <button type="button" class="ab" onclick="rotImg()">⟳ Повернуть</button>
+            <label class="ab"><input type="checkbox" id="cropOn" checked class="accent-[#00ff66]" onchange="refreshPreview()"> Кадр 4:5</label>
+            <button type="button" id="clearImg" class="ab r hidden" onclick="clearImage()">Убрать фото</button>
           </div>
         </div>
         <div class="lg:col-span-3 space-y-3">
           <h4 id="formTitle" class="font-bold text-[var(--accent)]"></h4>
-          <input type="text" id="formName" class="input-custom" data-ph="f_name_ph" required maxlength="80">
-          <div class="grid grid-cols-2 gap-3"><input type="number" step="0.01" min="0" id="formPrice" class="input-custom" data-ph="f_price_ph" required><input type="text" id="formTag" list="tagList" class="input-custom" data-ph="f_tag_ph" required></div>
+          <input type="text" id="formName" class="input-custom" placeholder="Название товара" required maxlength="80">
+          <div class="grid grid-cols-2 gap-3"><input type="number" step="0.01" min="0" id="formPrice" class="input-custom" placeholder="Цена, AZN" required><input type="text" id="formTag" list="tagList" class="input-custom" placeholder="Категория" required></div>
           <div id="tagChips" class="flex flex-wrap gap-1.5"></div>
-          <div class="relative"><textarea id="formDesc" rows="3" maxlength="400" class="input-custom" data-ph="f_desc_ph"></textarea><span class="absolute right-3 bottom-2 mono text-[10px] text-gray-500"><span id="descN">0</span>/400</span></div>
-          <label class="flex items-center gap-3 font-bold text-sm"><input type="checkbox" id="formIsNew" class="sw"> <span data-i="f_new">Новинка (бейдж NEW)</span></label>
-          <div class="ac flex gap-3 items-center"><div class="relative"><img id="lvImg" class="w-16 h-20 rounded-lg object-cover bg-white/5" alt=""><span id="lvNew" class="hidden absolute top-1 left-1 bg-[var(--accent)] text-[#07070a] text-[9px] font-black px-1.5 rounded-full">NEW</span></div><div class="min-w-0"><div class="text-[10px] text-gray-500 mono" data-i="preview_live_label">Так товар увидят на сайте</div><div id="lvName" class="font-heading text-sm font-bold truncate"></div><div id="lvTag" class="mono text-[11px] text-[var(--accent)]"></div><div id="lvPrice" class="font-heading font-black text-[var(--accent)]"></div></div></div>
+          <div class="relative"><textarea id="formDesc" rows="3" maxlength="400" class="input-custom" placeholder="Описание: материал, посадка, размеры"></textarea><span class="absolute right-3 bottom-2 mono text-[10px] text-gray-500"><span id="descN">0</span>/400</span></div>
+          <label class="flex items-center gap-3 font-bold text-sm"><input type="checkbox" id="formIsNew" class="sw"> Новинка (бейдж NEW)</label>
+          <div class="ac flex gap-3 items-center"><div class="relative"><img id="lvImg" class="w-16 h-20 rounded-lg object-cover bg-white/5" alt=""><span id="lvNew" class="hidden absolute top-1 left-1 bg-[var(--accent)] text-[#07070a] text-[9px] font-black px-1.5 rounded-full">NEW</span></div><div class="min-w-0"><div class="text-[10px] text-gray-500 mono">Так товар увидят на сайте</div><div id="lvName" class="font-heading text-sm font-bold truncate"></div><div id="lvTag" class="mono text-[11px] text-[var(--accent)]"></div><div id="lvPrice" class="font-heading font-black text-[var(--accent)]"></div></div></div>
           <div class="flex flex-wrap gap-2 justify-end">
-            <span id="eExtra" class="hidden mr-auto flex gap-2"><button type="button" class="ab" onclick="dupProduct($('productId').value)" data-i="btn_dup">📋 Дублировать</button><button type="button" class="ab r" onclick="deleteProducts([$('productId').value])" data-i="btn_delete">🗑️ Удалить</button></span>
-            <button type="button" class="ab" onclick="cancelEdit()" data-i="cancel_btn">Отмена</button>
-            <button type="button" class="ab sbtn" onclick="saveProduct(null,true)" data-i="save_and_more">Сохранить и добавить ещё</button>
-            <button type="submit" class="ab g sbtn">💾 <span data-i="save_btn">Сохранить</span> (Ctrl+S)</button>
+            <span id="eExtra" class="hidden mr-auto flex gap-2"><button type="button" class="ab" onclick="dupProduct($('productId').value)">📋 Дублировать</button><button type="button" class="ab r" onclick="deleteProducts([$('productId').value])">🗑️ Удалить</button></span>
+            <button type="button" class="ab" onclick="cancelEdit()">Отмена</button>
+            <button type="button" class="ab sbtn" onclick="saveProduct(null,true)">Сохранить и добавить ещё</button>
+            <button type="submit" class="ab g sbtn">💾 Сохранить (Ctrl+S)</button>
           </div>
           <p id="formError" class="text-red-400 text-sm font-bold"></p>
         </div>
@@ -336,90 +314,44 @@ body{background:var(--bg);color:#f3f4f6;font-family:'Plus Jakarta Sans',sans-ser
     </section>
 
     <section class="apanel" data-p="quick">
-      <p class="text-sm text-gray-400 mb-3" data-i="quick_desc">Добавьте сразу много фото — для каждого появится строка.</p>
+      <p class="text-sm text-gray-400 mb-3">Добавьте сразу много фото — для каждого появится строка. Названия берутся из имён файлов.</p>
       <div class="grid md:grid-cols-4 gap-2 mb-3">
-        <input id="qTag" list="tagList" class="ai" data-ph="f_tag_ph_all"><input id="qPrice" type="number" step="0.01" class="ai" data-ph="f_price_ph_all">
-        <label class="ab"><input type="checkbox" id="qNew" class="accent-[#00ff66]"> <span data-i="new_for_all">NEW для всех</span></label><button class="ab" onclick="qaApply()" data-i="btn_apply_all">Применить ко всем</button>
+        <input id="qTag" list="tagList" class="ai" placeholder="Категория для всех"><input id="qPrice" type="number" step="0.01" class="ai" placeholder="Цена для всех">
+        <label class="ab"><input type="checkbox" id="qNew" class="accent-[#00ff66]"> NEW для всех</label><button class="ab" onclick="qaApply()">Применить ко всем</button>
       </div>
-      <label id="qdrop" class="drop block mb-3" for="qFile"><div class="font-bold text-sm" data-i="drop_quick_title">📁 Перетащите фото сюда</div><input type="file" id="qFile" accept="image/*" multiple class="sr-only" onchange="qaAdd(this.files);this.value=''"></label>
+      <label id="qdrop" class="drop block mb-3" for="qFile"><div class="font-bold text-sm">📁 Перетащите фото сюда или нажмите для выбора (можно несколько)</div><input type="file" id="qFile" accept="image/*" multiple class="sr-only" onchange="qaAdd(this.files);this.value=''"></label>
       <div id="qRows" class="space-y-2 max-h-[40vh] overflow-y-auto"></div>
-      <div class="flex flex-wrap items-center gap-3 mt-3"><label class="ab"><input type="checkbox" id="qCrop" checked class="accent-[#00ff66]"> <span data-i="crop_45">Кадр 4:5</span></label><div class="flex-1 h-2 rounded bg-white/10 overflow-hidden"><div id="qProg" class="h-full bg-[var(--accent)] w-0 transition-all"></div></div><button id="qSave" class="ab g" onclick="qaSave()">💾 <span data-i="save_all">Сохранить все</span></button></div>
+      <div class="flex flex-wrap items-center gap-3 mt-3"><label class="ab"><input type="checkbox" id="qCrop" checked class="accent-[#00ff66]"> Кадр 4:5</label><div class="flex-1 h-2 rounded bg-white/10 overflow-hidden"><div id="qProg" class="h-full bg-[var(--accent)] w-0 transition-all"></div></div><button id="qSave" class="ab g" onclick="qaSave()">💾 Сохранить все</button></div>
     </section>
 
     <section class="apanel" data-p="cats"><div id="pCats" class="grid md:grid-cols-2 gap-3"></div></section>
 
     <section class="apanel" data-p="tools">
       <div class="grid md:grid-cols-2 gap-4">
-        <div class="ac space-y-3"><h4 class="font-bold">📤 <span data-i="export_title">Экспорт</span></h4><p class="text-xs text-gray-400" data-i="export_desc">Скачайте все товары файлом</p><div class="flex gap-2"><button class="ab g" onclick="exportJSON()">JSON</button><button class="ab g" onclick="exportCSV()">CSV (Excel)</button></div></div>
-        <div class="ac space-y-3"><h4 class="font-bold">📥 <span data-i="import_title">Импорт</span></h4><p class="text-xs text-gray-400" data-i="import_desc">JSON или CSV с колонками name, price, tag, img, desc, isNew</p><input type="file" accept=".json,.csv" class="text-xs" onchange="impRead(this.files[0])"><div id="impInfo" class="text-sm"></div></div>
-        <div class="ac space-y-3"><h4 class="font-bold">🧹 <span data-i="orphans_title">Лишние фото</span></h4><p class="text-xs text-gray-400" data-i="orphans_desc">Файлы, которые не используются ни одним товаром</p><button class="ab" onclick="findOrphans()" data-i="btn_find">Найти</button><div id="orphans" class="text-sm"></div></div>
-        <div class="ac space-y-3"><h4 class="font-bold">🔑 <span data-i="chpass_title">Смена пароля</span></h4><input id="newPass" type="password" class="ai w-full" data-ph="new_pass_ph" autocomplete="new-password"><button class="ab" onclick="changePass()" data-i="btn_chpass">Сменить пароль</button></div>
-        <div class="ac md:col-span-2"><div class="flex justify-between items-center mb-2"><h4 class="font-bold">🗑️ <span data-i="trash_title">Корзина (удалённые товары)</span></h4><button class="ab r" onclick="clearTrash()" data-i="btn_clear">Очистить</button></div><div id="trashList" class="space-y-2"></div></div>
-        <div class="ac md:col-span-2 text-xs text-gray-400"><b class="text-white" data-i="hotkeys_title">⌨️ Горячие клавиши:</b> <span data-i="hotkeys_desc">Ctrl+S — сохранить товар · Ctrl+V — вставить фото · / — поиск · Esc — закрыть</span></div>
+        <div class="ac space-y-3"><h4 class="font-bold">📤 Экспорт (резервная копия)</h4><p class="text-xs text-gray-400">Скачайте все товары файлом — на случай ошибок.</p><div class="flex gap-2"><button class="ab g" onclick="exportJSON()">JSON</button><button class="ab g" onclick="exportCSV()">CSV (Excel)</button></div></div>
+        <div class="ac space-y-3"><h4 class="font-bold">📥 Импорт</h4><p class="text-xs text-gray-400">JSON или CSV с колонками name, price, tag, img, desc, isNew.</p><input type="file" accept=".json,.csv" class="text-xs" onchange="impRead(this.files[0])"><div id="impInfo" class="text-sm"></div></div>
+        <div class="ac space-y-3"><h4 class="font-bold">🧹 Лишние фото в хранилище</h4><p class="text-xs text-gray-400">Файлы, которые не используются ни одним товаром.</p><button class="ab" onclick="findOrphans()">Найти</button><div id="orphans" class="text-sm"></div></div>
+        <div class="ac space-y-3"><h4 class="font-bold">🔑 Смена пароля</h4><input id="newPass" type="password" class="ai w-full" placeholder="Новый пароль (от 6 символов)" autocomplete="new-password"><button class="ab" onclick="changePass()">Сменить пароль</button></div>
+        <div class="ac md:col-span-2"><div class="flex justify-between items-center mb-2"><h4 class="font-bold">🗑️ Корзина (удалённые товары)</h4><button class="ab r" onclick="clearTrash()">Очистить</button></div><div id="trashList" class="space-y-2"></div></div>
+        <div class="ac md:col-span-2 text-xs text-gray-400"><b class="text-white">⌨️ Горячие клавиши:</b> Ctrl+S — сохранить товар · Ctrl+V — вставить фото из буфера · / — поиск по товарам · Esc — закрыть окно</div>
       </div>
     </section>
   </div></div></div>
 
 <script>
-/* ===== SUPABASE ===== */
+/* ===== SUPABASE (ключи не изменены) ===== */
 const SUPABASE_URL = "https://qzjsjggkgjpjohphienc.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_pPIgKIKR7XOS1f6RrTBGUA_yleuRzTV";
 const isLive = !SUPABASE_URL.startsWith("YOUR_");
 const supabaseClient = isLive ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
-const BUCKET = "product-images";
+const BUCKET = "product-images"; // Supabase Storage bucket (public)
 
 /* ===== I18N ===== */
 const T = {
-az:{
-  hours_text:"Hər gün 10:00–23:00",map_link:"📍 Sumqayıt Xəritəsi",cart_btn:"Səbət",admin_title:"Admin",admin_panel_head:"Admin Paneli",
-  hero_desc:"Ən son trend geyimlər, premium oversize hudilər, kargolar və eksklüziv aksesuarlar bir ünvanda. Hər gün yenilənən kolleksiya.",explore_btn:"Kolleksiyaya Bax ⚡",f_1:"Keyfiyyət",f_2:"Hər gün açıq",f_3:"Məhsul",
-  catalog_badge:"Kataloq",catalog_title:"Bütün Məhsullar",sort_def:"Sıralama",sort_asc:"Ucuzdan bahaya",sort_desc:"Bahadan ucuza",empty_text:"Axtarışınıza uyğun məhsul tapılmadı.",contact_badge:"Əlaqə və Ünvan",contact_title:"Mağazamıza Gəlin",contact_desc:"Sumqayıtdakı mağazamıza baş çəkin, geyimləri yerində yoxlayın. Sosial şəbəkələrdən də yaza bilərsiniz.",hrs_label:"İş saatları",cart_modal_title:"Səbətiniz",total_text:"Cəmi:",order_wa_btn:"📲 WhatsApp ilə Sifariş Et",
-  login_btn:"Daxil ol",logout_btn:"Çıxış",cancel_btn:"Ləğv et",save_btn:"Yadda saxla",new_badge:"YENİ",add_to_cart:"+ Səbətə at",all:"Hamısı",toast:"Məhsul səbətə əlavə olundu! 🛍️",cart_empty:"Səbətiniz boşdur",need_info:"Ad və nömrənizi daxil edin!",search_ph:"Axtar...",name_ph:"Adınız",phone_ph:"Əlaqə nömrəsi",
-  drop_title:"Şəkli bura atın və ya seçin",drop_hint:"JPG, PNG, WEBP — avtomatik sıxılır",remove_img:"Şəkli sil",f_name:"Məhsul adı",f_price:"Qiymət (AZN)",f_tag:"Kategoriya",f_desc:"Məhsul haqqında",f_new:"Yeni məhsul (New Drop)",add_title:"➕ Yeni məhsul",edit_title:"✏️ Redaktə",saved:"Yadda saxlandı ✅",deleted:"Silindi 🗑️",need_img:"Şəkil yükləyin",uploading:"Yüklənir...",confirm_del:"Bu məhsulu silmək istəyirsiniz?",not_img:"Yalnız şəkil faylı seçin",
-  tab_dash:"İcmal",tab_list:"Məhsullar",tab_edit:"Əlavə / Düzəliş",tab_quick:"Sürətli yükləmə",tab_cats:"Kategoriyalar",tab_tools:"Alətlər",
-  stat_total:"Məhsul sayı",stat_new:"Yenilər",stat_cats:"Kategoriyalar",stat_avg:"Orta qiymət",stat_minmax:"Min / Maks",stat_sum:"Kataloq məbləği",
-  need_attn:"Diqqət tələb edir",attn_nodesc:"təsvir yoxdur",attn_noprice:"qiymət 0",attn_noimg:"şəkil yoxdur",attn_dup:"təkrar ad",quick_acts:"Sürətli əməliyyatlar",last_acts:"Son əməliyyatlar",no_data:"Məlumat yoхdur",
-  adm_search_ph:"🔍 Ad, kategoriya ilə axtar...",flt_all:"Bütün məhsullar",flt_new:"Yalnız yenilər",flt_old:"Yenilər xaric",flt_nodesc:"Təsviri olmayanlar",sort_def_adm:"Saytdakı kimi",sort_name_adm:"Ad A–Z",sort_asc_adm:"Qiymət ↑",sort_desc_adm:"Qiymət ↓",
-  btn_new:"➕ Yeni",selected_lbl:"Seçilib:",btn_new_on:"NEW aç",btn_new_off:"NEW bağla",btn_apply:"Tətbiq et",btn_delete:"🗑️ Sil",btn_deselect:"Seçimi ləğv et",table_hint:"Qiyməti cədvəldə dəyişmək olar",th_product:"Məhsul",th_cat:"Kategoriya",th_price:"Qiymət ₼",
-  crop_45:"Kadr 4:5",btn_rotate:"⟳ Fırlat",preview_live_label:"Saytda belə görünəcək",save_and_more:"Yadda saxla və yenisini əlavə et",btn_dup:"📋 Dublikat",
-  quick_desc:"Çoxlu şəkil əlavə edin — hər biri üçün sətir yaradılacaq.",f_tag_ph_all:"Hamısı üçün kategoriya",f_price_ph_all:"Hamısı üçün qiymət",new_for_all:"Hamısı üçün NEW",btn_apply_all:"Hamısına tətbiq et",drop_quick_title:"📁 Şəkilləri bura atın və ya seçin",save_all:"Hamısını yadda saxla",
-  export_title:"Eksport (Ehtiyat nüsxə)",export_desc:"Bütün məhsulları fayl kimi endirin",import_title:"İmport",import_desc:"JSON və ya CSV faylı yükləyin",orphans_title:"Gərəksiz şəkillər",orphans_desc:"Hec bir məhsulda istifadə olunmayan şəkillər",btn_find:"Axtar",chpass_title:"Şifrəni dəyiş",new_pass_ph:"Yeni şifrə (min 6 simvol)",btn_chpass:"Şifrəni yenilə",trash_title:"Zibil qutusu (Silinmişlər)",btn_clear:"Təmizlə",hotkeys_title:"⌨️️ Qısayollar:",hotkeys_desc:"Ctrl+S — yadda saxla · Ctrl+V — şəkil yapışdır · / — axtarış · Esc — bağla",
-  f_name_ph:"Məhsul adı",f_price_ph:"Qiymət, AZN",f_tag_ph:"Kategoriya",f_desc_ph:"Məhsul haqqında: material, ölçülər...",msg_new_on:"NEW tətbiq edildi",msg_new_off:"NEW ləğv edildi",restore_btn:"↩ Qaytar",purge_btn:"Həmişəlik sil"
-},
-ru:{
-  hours_text:"Ежедневно 10:00–23:00",map_link:"📍 Карта Сумгаит",cart_btn:"Корзина",admin_title:"Админ",admin_panel_head:"Панель администратора",
-  hero_desc:"Свежий стритвир, премиальные oversize худи, карго и эксклюзивные аксессуары в Сумгаите. Обновления каждый день.",explore_btn:"Смотреть каталог ⚡",f_1:"Качество",f_2:"Без выходных",f_3:"Товаров",
-  catalog_badge:"Каталог",catalog_title:"Все товары",sort_def:"Сортировка",sort_asc:"Сначала дешевле",sort_desc:"Сначала дороже",empty_text:"По вашему запросу ничего не найдено.",contact_badge:"Контакты и карта",contact_title:"Приходите в магазин",contact_desc:"Загляните в наш магазин в Сумгаите, примерьте вещи на месте. Также можно написать нам в соцсетях.",hrs_label:"Часы работы",cart_modal_title:"Ваша корзина",total_text:"Итого:",order_wa_btn:"📲 Заказать в WhatsApp",
-  login_btn:"Войти",logout_btn:"Выйти",cancel_btn:"Отмена",save_btn:"Сохранить",new_badge:"NEW",add_to_cart:"+ В корзину",all:"Все",toast:"Товар добавлен в корзину! 🛍️",cart_empty:"Корзина пуста",need_info:"Укажите имя и телефон!",search_ph:"Поиск...",name_ph:"Ваше имя",phone_ph:"Телефон",
-  drop_title:"Перетащите фото или выберите",drop_hint:"JPG, PNG, WEBP — сжимается автоматически",remove_img:"Убрать фото",f_name:"Название",f_price:"Цена (AZN)",f_tag:"Категория",f_desc:"Описание",f_new:"Новинка (New Drop)",add_title:"➕ Новый товар",edit_title:"✏️ Редактирование",saved:"Сохранено ✅",deleted:"Удалено 🗑️",need_img:"Загрузите фото",uploading:"Загрузка...",confirm_del:"Удалить этот товар?",not_img:"Выберите файл изображения",
-  tab_dash:"Обзор",tab_list:"Товары",tab_edit:"Добавить / изменить",tab_quick:"Быстрая загрузка",tab_cats:"Категории",tab_tools:"Инструменты",
-  stat_total:"Товаров",stat_new:"Новинок",stat_cats:"Категорий",stat_avg:"Средняя цена",stat_minmax:"Мин / Макс",stat_sum:"Сумма каталога",
-  need_attn:"Требует внимания",attn_nodesc:"нет описания",attn_noprice:"цена 0",attn_noimg:"нет фото",attn_dup:"дубликат названия",quick_acts:"Быстрые действия",last_acts:"Последние действия",no_data:"Нет данных",
-  adm_search_ph:"🔍 Поиск по названию, категории...",flt_all:"Все товары",flt_new:"Только новинки",flt_old:"Не новинки",flt_nodesc:"Без описания",sort_def_adm:"Как на сайте",sort_name_adm:"Название А–Я",sort_asc_adm:"Цена ↑",sort_desc_adm:"Цена ↓",
-  btn_new:"➕ Новый",selected_lbl:"Выбрано:",btn_new_on:"NEW вкл",btn_new_off:"NEW выкл",btn_apply:"Применить",btn_delete:"🗑️ Удалить",btn_deselect:"Снять",table_hint:"Цену можно менять прямо в таблице",th_product:"Товар",th_cat:"Категория",th_price:"Цена ₼",
-  crop_45:"Кадр 4:5",btn_rotate:"⟳ Повернуть",preview_live_label:"Так товар увидят на сайте",save_and_more:"Сохранить и добавить ещё",btn_dup:"📋 Дублировать",
-  quick_desc:"Добавьте сразу много фото — для каждого появится строка.",f_tag_ph_all:"Категория для всех",f_price_ph_all:"Цена для всех",new_for_all:"NEW для всех",btn_apply_all:"Применить ко всем",drop_quick_title:"📁 Перетащите фото сюда или нажмите для выбора",save_all:"Сохранить все",
-  export_title:"Экспорт (резервная копия)",export_desc:"Скачайте все товары файлом",import_title:"Импорт",import_desc:"JSON или CSV с колонками name, price, tag, img, desc, isNew",orphans_title:"Лишние фото в хранилище",orphans_desc:"Файлы, которые не используются ни одним товаром",btn_find:"Найти",chpass_title:"Смена пароля",new_pass_ph:"Новый пароль (от 6 символов)",btn_chpass:"Сменить пароль",trash_title:"Корзина (удалённые товары)",btn_clear:"Очистить",hotkeys_title:"⌨️ Горячие клавиши:",hotkeys_desc:"Ctrl+S — сохранить товар · Ctrl+V — вставить фото · / — поиск · Esc — закрыть",
-  f_name_ph:"Название товара",f_price_ph:"Цена, AZN",f_tag_ph:"Категория",f_desc_ph:"Описание: материал, посадка, размеры",msg_new_on:"Помечено NEW",msg_new_off:"NEW снят",restore_btn:"↩ Вернуть",purge_btn:"Навсегда"
-},
-en:{
-  hours_text:"Daily 10:00–23:00",map_link:"📍 Sumqayit Map",cart_btn:"Cart",admin_title:"Admin",admin_panel_head:"Admin Panel",
-  hero_desc:"Fresh streetwear drops, premium oversize hoodies, cargo pants and exclusive accessories from Sumqayit. Daily updates.",explore_btn:"Explore Drops ⚡",f_1:"Top Quality",f_2:"Open Daily",f_3:"Products",
-  catalog_badge:"Catalog",catalog_title:"Featured Collection",sort_def:"Sort by",sort_asc:"Price: Low to High",sort_desc:"Price: High to Low",empty_text:"No products found.",contact_badge:"Get in touch",contact_title:"Visit Our Store",contact_desc:"Visit our store in Sumqayit and try things on in person. You can also message us on social media.",hrs_label:"Working hours",cart_modal_title:"Shopping Cart",total_text:"Total:",order_wa_btn:"📲 Order via WhatsApp",
-  login_btn:"Sign In",logout_btn:"Sign Out",cancel_btn:"Cancel",save_btn:"Save",new_badge:"NEW",add_to_cart:"+ Add to Cart",all:"All",toast:"Added to cart! 🛍️",cart_empty:"Your cart is empty",need_info:"Enter your name and phone!",search_ph:"Search...",name_ph:"Your name",phone_ph:"Phone",
-  drop_title:"Drop a photo or click to choose",drop_hint:"JPG, PNG, WEBP — auto-compressed",remove_img:"Remove photo",f_name:"Product name",f_price:"Price (AZN)",f_tag:"Category",f_desc:"Description",f_new:"New drop",add_title:"➕ New product",edit_title:"✏️ Edit product",saved:"Saved ✅",deleted:"Deleted 🗑️",need_img:"Upload a photo",uploading:"Uploading...",confirm_del:"Delete this product?",not_img:"Choose an image file",
-  tab_dash:"Dashboard",tab_list:"Products",tab_edit:"Add / Edit",tab_quick:"Quick Upload",tab_cats:"Categories",tab_tools:"Tools",
-  stat_total:"Total Products",stat_new:"New Items",stat_cats:"Categories",stat_avg:"Avg Price",stat_minmax:"Min / Max",stat_sum:"Total Catalog Value",
-  need_attn:"Needs Attention",attn_nodesc:"no description",attn_noprice:"price is 0",attn_noimg:"no photo",attn_dup:"duplicate title",quick_acts:"Quick Actions",last_acts:"Recent Logs",no_data:"No data available",
-  adm_search_ph:"🔍 Search by name, category...",flt_all:"All products",flt_new:"Only NEW drops",flt_old:"Not NEW",flt_nodesc:"Without description",sort_def_adm:"Default site order",sort_name_adm:"Name A–Z",sort_asc_adm:"Price ↑",sort_desc_adm:"Price ↓",
-  btn_new:"➕ New",selected_lbl:"Selected:",btn_new_on:"NEW On",btn_new_off:"NEW Off",btn_apply:"Apply",btn_delete:"🗑️ Delete",btn_deselect:"Deselect",table_hint:"Price can be edited right in the table",th_product:"Product",th_cat:"Category",th_price:"Price ₼",
-  crop_45:"Aspect 4:5",btn_rotate:"⟳ Rotate",preview_live_label:"Live preview for store",save_and_more:"Save and add another",btn_dup:"📋 Duplicate",
-  quick_desc:"Upload multiple images at once to create bulk entries.",f_tag_ph_all:"Category for all",f_price_ph_all:"Price for all",new_for_all:"NEW for all",btn_apply_all:"Apply to all",drop_quick_title:"📁 Drop images here or click to upload",save_all:"Save All",
-  export_title:"Export (Backup)",export_desc:"Download all catalog items as a file",import_title:"Import",import_desc:"Import JSON or CSV with keys name, price, tag, img, desc, isNew",orphans_title:"Unused Storage Images",orphans_desc:"Image files not attached to any active product",btn_find:"Scan",chpass_title:"Change Password",new_pass_ph:"New password (min 6 chars)",btn_chpass:"Update Password",trash_title:"Trash Bin (Deleted Items)",btn_clear:"Clear Bin",hotkeys_title:"⌨️ Shortcuts:",hotkeys_desc:"Ctrl+S — save · Ctrl+V — paste image · / — search · Esc — close modal",
-  f_name_ph:"Product title",f_price_ph:"Price, AZN",f_tag_ph:"Category",f_desc_ph:"Description: fit, material, sizing",msg_new_on:"Marked as NEW",msg_new_off:"NEW flag removed",restore_btn:"↩ Restore",purge_btn:"Delete permanently"
-}
+az:{hours_text:"Hər gün 10:00–23:00",map_link:"📍 Sumqayıt Map",cart_btn:"Səbət",hero_desc:"Ən son trend geyimlər, premium oversize hudilər, kargolar və eksklüziv aksesuarlar bir ünvanda. Hər gün yenilənən kolleksiya.",explore_btn:"Kolleksiyaya Bax ⚡",f_1:"Keyfiyyət",f_2:"Hər gün açıq",f_3:"Məhsul",catalog_badge:"Kataloq",catalog_title:"Bütün Məhsullar",sort_def:"Sıralama",sort_asc:"Ucuzdan bahaya",sort_desc:"Bahadan ucuza",empty_text:"Axtarışınıza uyğun məhsul tapılmadı.",contact_badge:"Əlaqə və Ünvan",contact_title:"Mağazamıza Gəlin",contact_desc:"Sumqayıtdakı mağazamıza baş çəkin, geyimləri yerində yoxlayın. Sosial şəbəkələrdən də yaza bilərsiniz.",hrs_label:"İş saatları",cart_modal_title:"Səbətiniz",total_text:"Cəmi:",order_wa_btn:"📲 WhatsApp ilə Sifariş Et",login_btn:"Daxil ol",logout_btn:"Çıxış",cancel_btn:"Ləğv et",save_btn:"Yadda saxla",new_badge:"YENİ",add_to_cart:"+ Səbətə at",all:"Hamısı",toast:"Məhsul səbətə əlavə olundu! 🛍️",cart_empty:"Səbətiniz boşdur",need_info:"Ad və nömrənizi daxil edin!",search_ph:"Axtar...",name_ph:"Adınız",phone_ph:"Əlaqə nömrəsi",st_all:"Məhsul",st_tags:"Kategoriya",drop_title:"Şəkli bura atın və ya seçin",drop_hint:"JPG, PNG, WEBP — avtomatik sıxılır",remove_img:"Şəkli sil",f_name:"Məhsul adı",f_price:"Qiymət (AZN)",f_tag:"Kategoriya (Hoodies...)",f_desc:"Məhsul haqqında",f_new:"Yeni məhsul (New Drop)",add_title:"➕ Yeni məhsul",edit_title:"✏️ Redaktə",saved:"Yadda saxlandı ✅",deleted:"Silindi 🗑️",need_img:"Şəkil yükləyin",uploading:"Yüklənir...",confirm_del:"Bu məhsulu silmək istəyirsiniz?",not_img:"Yalnız şəkil faylı seçin"},
+ru:{hours_text:"Ежедневно 10:00–23:00",map_link:"📍 Карта Сумгаит",cart_btn:"Корзина",hero_desc:"Свежий стритвир, премиальные oversize худи, карго и эксклюзивные аксессуары в Сумгаите. Обновления каждый день.",explore_btn:"Смотреть каталог ⚡",f_1:"Качество",f_2:"Без выходных",f_3:"Товаров",catalog_badge:"Каталог",catalog_title:"Все товары",sort_def:"Сортировка",sort_asc:"Сначала дешевле",sort_desc:"Сначала дороже",empty_text:"По вашему запросу ничего не найдено.",contact_badge:"Контакты и карта",contact_title:"Приходите в магазин",contact_desc:"Загляните в наш магазин в Сумгаите, примерьте вещи на месте. Также можно написать нам в соцсетях.",hrs_label:"Часы работы",cart_modal_title:"Ваша корзина",total_text:"Итого:",order_wa_btn:"📲 Заказать в WhatsApp",login_btn:"Войти",logout_btn:"Выйти",cancel_btn:"Отмена",save_btn:"Сохранить",new_badge:"NEW",add_to_cart:"+ В корзину",all:"Все",toast:"Товар добавлен в корзину! 🛍️",cart_empty:"Корзина пуста",need_info:"Укажите имя и телефон!",search_ph:"Поиск...",name_ph:"Ваше имя",phone_ph:"Телефон",st_all:"Товаров",st_tags:"Категорий",drop_title:"Перетащите фото или выберите",drop_hint:"JPG, PNG, WEBP — сжимается автоматически",remove_img:"Убрать фото",f_name:"Название",f_price:"Цена (AZN)",f_tag:"Категория (Hoodies...)",f_desc:"Описание",f_new:"Новинка (New Drop)",add_title:"➕ Новый товар",edit_title:"✏️ Редактирование",saved:"Сохранено ✅",deleted:"Удалено 🗑️",need_img:"Загрузите фото",uploading:"Загрузка...",confirm_del:"Удалить этот товар?",not_img:"Выберите файл изображения"},
+en:{hours_text:"Daily 10:00–23:00",map_link:"📍 Sumqayit Map",cart_btn:"Cart",hero_desc:"Fresh streetwear drops, premium oversize hoodies, cargo pants and exclusive accessories from Sumqayit. Daily updates.",explore_btn:"Explore Drops ⚡",f_1:"Top Quality",f_2:"Open Daily",f_3:"Products",catalog_badge:"Catalog",catalog_title:"Featured Collection",sort_def:"Sort by",sort_asc:"Price: Low to High",sort_desc:"Price: High to Low",empty_text:"No products found.",contact_badge:"Get in touch",contact_title:"Visit Our Store",contact_desc:"Visit our store in Sumqayit and try things on in person. You can also message us on social media.",hrs_label:"Working hours",cart_modal_title:"Shopping Cart",total_text:"Total:",order_wa_btn:"📲 Order via WhatsApp",login_btn:"Sign In",logout_btn:"Sign Out",cancel_btn:"Cancel",save_btn:"Save",new_badge:"NEW",add_to_cart:"+ Add to Cart",all:"All",toast:"Added to cart! 🛍️",cart_empty:"Your cart is empty",need_info:"Enter your name and phone!",search_ph:"Search...",name_ph:"Your name",phone_ph:"Phone",st_all:"Products",st_tags:"Categories",drop_title:"Drop a photo or click to choose",drop_hint:"JPG, PNG, WEBP — auto-compressed",remove_img:"Remove photo",f_name:"Product name",f_price:"Price (AZN)",f_tag:"Category (Hoodies...)",f_desc:"Description",f_new:"New drop",add_title:"➕ New product",edit_title:"✏️ Edit product",saved:"Saved ✅",deleted:"Deleted 🗑️",need_img:"Upload a photo",uploading:"Uploading...",confirm_del:"Delete this product?",not_img:"Choose an image file"}
 };
-
 const demoProducts=[
 {id:"d1",name:"Cyber Oversize Hoodie",price:55,tag:"Hoodies",desc:"Heavyweight French terry cotton, relaxed futuristic fit.",img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800",isNew:true},
 {id:"d2",name:"Tactical Cargo Pants",price:45,tag:"Pants",desc:"Six pockets, durable techwear fabric with adjustable straps.",img:"https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800",isNew:false},
@@ -552,11 +484,11 @@ const ls=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){retu
 const lset=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
 const alog=m=>{const l=ls("alog",[]);l.unshift({t:Date.now(),m});lset("alog",l.slice(0,30))};
 const money=n=>Number(n||0).toFixed(2)+" ₼";
-const kb=n=>n>1048576?(n/1048576).toFixed(1)+" MB":Math.round(n/1024)+" KB";
+const kb=n=>n>1048576?(n/1048576).toFixed(1)+" МБ":Math.round(n/1024)+" КБ";
 const ids=()=>[...sel];
 const nm=id=>(real().find(p=>String(p.id)===String(id))||{}).name||"";
-const fdate=t=>new Date(t).toLocaleString(lang==="az"?"az-AZ":lang==="en"?"en-US":"ru-RU",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"});
-const fail=e=>{const m=(e&&e.message)||String(e);if(/jwt|token|expired|401/i.test(m)){toast("Auth expired",true);showAdminDashboard(false)}else toast(m,true)};
+const fdate=t=>new Date(t).toLocaleString("ru-RU",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"});
+const fail=e=>{const m=(e&&e.message)||String(e);if(/jwt|token|expired|401/i.test(m)){toast("Сессия истекла — войдите заново",true);showAdminDashboard(false)}else toast(m,true)};
 async function sync(){await loadProducts();renderAdmin()}
 function setTab(t){adm.tab=t;document.querySelectorAll(".at").forEach(b=>b.classList.toggle("on",b.dataset.t===t));document.querySelectorAll(".apanel").forEach(p=>p.classList.toggle("on",p.dataset.p===t));renderAdmin()}
 function renderAdmin(){
@@ -578,24 +510,24 @@ function showAdminDashboard(a){
 async function adminLogin(e){
   e.preventDefault();if(!isLive)return;
   const{error}=await supabaseClient.auth.signInWithPassword({email:$("adminEmail").value.trim(),password:$("adminPassword").value});
-  $("adminLoginError").textContent=error?error.message:"";if(!error){$("adminPassword").value="";alog("Admin login");showAdminDashboard(true)}
+  $("adminLoginError").textContent=error?error.message:"";if(!error){$("adminPassword").value="";alog("Вход в админку");showAdminDashboard(true)}
 }
 async function adminLogout(){if(isLive)await supabaseClient.auth.signOut();showAdminDashboard(false)}
 
 /* --- Обзор --- */
 function rDash(){
   const P=real(),n=P.length,pr=P.map(p=>+p.price||0),sum=pr.reduce((x,y)=>x+y,0),C=cats(),mx=Math.max(1,...C.map(c=>P.filter(p=>p.tag===c).length));
-  const kp=[[t("stat_total"),n],[t("stat_new"),P.filter(p=>p.isNew).length],[t("stat_cats"),C.length],[t("stat_avg"),n?money(sum/n):"—"],[t("stat_minmax"),n?money(Math.min(...pr))+" / "+money(Math.max(...pr)):"—"],[t("stat_sum"),money(sum)]];
-  const w=[],seen={};P.forEach(p=>{if(!p.desc)w.push([p,t("attn_nodesc")]);if(!(+p.price>0))w.push([p,t("attn_noprice")]);if(!p.img)w.push([p,t("attn_noimg")]);const k=(p.name||"").trim().toLowerCase();(seen[k]=seen[k]||[]).push(p)});
-  Object.values(seen).forEach(a=>{if(a.length>1)a.forEach(p=>w.push([p,t("attn_dup")]))});
+  const kp=[["Товаров",n],["Новинок",P.filter(p=>p.isNew).length],["Категорий",C.length],["Средняя цена",n?money(sum/n):"—"],["Мин / Макс",n?money(Math.min(...pr))+" / "+money(Math.max(...pr)):"—"],["Сумма каталога",money(sum)]];
+  const w=[],seen={};P.forEach(p=>{if(!p.desc)w.push([p,"нет описания"]);if(!(+p.price>0))w.push([p,"цена 0"]);if(!p.img)w.push([p,"нет фото"]);const k=(p.name||"").trim().toLowerCase();(seen[k]=seen[k]||[]).push(p)});
+  Object.values(seen).forEach(a=>{if(a.length>1)a.forEach(p=>w.push([p,"дубликат названия"]))});
   const L=ls("alog",[]);
-  $("pDash").innerHTML=`${!n?`<div class="ac mb-4 text-center py-8"><div class="text-4xl mb-2">👕</div><div class="font-bold">${t("empty_text")}</div><div class="text-sm text-gray-400 mb-3"></div><button class="ab g" onclick="setTab('edit')">${t("btn_new")}</button> <button class="ab" onclick="setTab('quick')">${t("tab_quick")}</button></div>`:""}
+  $("pDash").innerHTML=`${!n?`<div class="ac mb-4 text-center py-8"><div class="text-4xl mb-2">👕</div><div class="font-bold">В каталоге пока нет товаров</div><div class="text-sm text-gray-400 mb-3">Добавьте первый товар или загрузите сразу много фото</div><button class="ab g" onclick="setTab('edit')">➕ Добавить товар</button> <button class="ab" onclick="setTab('quick')">⚡ Быстрая загрузка</button></div>`:""}
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-4">${kp.map(k=>`<div class="ac"><div class="text-[11px] text-gray-400">${k[0]}</div><div class="font-heading text-lg font-black mt-1 break-words">${k[1]}</div></div>`).join("")}</div>
   <div class="grid lg:grid-cols-2 gap-4">
-   <div class="ac"><h4 class="font-bold mb-3">${t("tab_cats")}</h4><div class="space-y-2">${C.map(c=>{const k=P.filter(p=>p.tag===c).length;return`<button class="w-full flex items-center gap-3 text-sm text-left" onclick="goCat('${encodeURIComponent(c)}')"><span class="w-28 truncate">${esc(c)}</span><span class="flex-1 h-2 rounded bg-white/10"><span class="bar block h-2 rounded bg-[var(--accent)]" data-w="${k/mx*100}" style="width:${k/mx*100}%"></span></span><b>${k}</b></button>`}).join("")||`<div class="text-sm text-gray-500">${t("no_data")}</div>`}</div></div>
-   <div class="ac"><h4 class="font-bold mb-3">${t("need_attn")} ${w.length?`<span class="mono text-xs text-amber-400">(${w.length})</span>`:""}</h4><div class="space-y-1.5 max-h-48 overflow-y-auto">${w.slice(0,30).map(([p,m])=>`<button class="w-full flex justify-between gap-3 text-sm hover:text-[var(--accent)]" onclick="editProduct('${jsq(p.id)}')"><span class="truncate">${esc(p.name)}</span><span class="text-amber-400 text-xs whitespace-nowrap">${m}</span></button>`).join("")||'<div class="text-sm text-[var(--accent)]">OK ✅</div>'}</div></div>
-   <div class="ac"><h4 class="font-bold mb-3">${t("quick_acts")}</h4><div class="flex flex-wrap gap-2"><button class="ab g" onclick="resetProductForm();setTab('edit')">${t("btn_new")}</button><button class="ab" onclick="setTab('quick')">${t("tab_quick")}</button><button class="ab" onclick="adm.flt='new';setTab('list')">${t("flt_new")}</button><button class="ab" onclick="adm.flt='nodesc';setTab('list')">${t("flt_nodesc")}</button><button class="ab" onclick="exportJSON()">${t("export_title")}</button></div></div>
-   <div class="ac"><h4 class="font-bold mb-3">${t("last_acts")}</h4><div class="space-y-1 max-h-40 overflow-y-auto text-sm">${L.map(x=>`<div class="flex gap-3"><span class="mono text-[11px] text-gray-500 whitespace-nowrap">${fdate(x.t)}</span><span class="truncate">${esc(x.m)}</span></div>`).join("")||`<div class="text-gray-500">${t("no_data")}</div>`}</div></div>
+   <div class="ac"><h4 class="font-bold mb-3">Товары по категориям</h4><div class="space-y-2">${C.map(c=>{const k=P.filter(p=>p.tag===c).length;return`<button class="w-full flex items-center gap-3 text-sm text-left" onclick="goCat('${encodeURIComponent(c)}')"><span class="w-28 truncate">${esc(c)}</span><span class="flex-1 h-2 rounded bg-white/10"><span class="bar block h-2 rounded bg-[var(--accent)]" data-w="${k/mx*100}" style="width:${k/mx*100}%"></span></span><b>${k}</b></button>`}).join("")||'<div class="text-sm text-gray-500">Нет данных</div>'}</div></div>
+   <div class="ac"><h4 class="font-bold mb-3">Требует внимания ${w.length?`<span class="mono text-xs text-amber-400">(${w.length})</span>`:""}</h4><div class="space-y-1.5 max-h-48 overflow-y-auto">${w.slice(0,30).map(([p,m])=>`<button class="w-full flex justify-between gap-3 text-sm hover:text-[var(--accent)]" onclick="editProduct('${jsq(p.id)}')"><span class="truncate">${esc(p.name)}</span><span class="text-amber-400 text-xs whitespace-nowrap">${m}</span></button>`).join("")||'<div class="text-sm text-[var(--accent)]">Всё в порядке ✅</div>'}</div></div>
+   <div class="ac"><h4 class="font-bold mb-3">Быстрые действия</h4><div class="flex flex-wrap gap-2"><button class="ab g" onclick="resetProductForm();setTab('edit')">➕ Новый товар</button><button class="ab" onclick="setTab('quick')">⚡ Много фото сразу</button><button class="ab" onclick="adm.flt='new';setTab('list')">🔥 Новинки</button><button class="ab" onclick="adm.flt='nodesc';setTab('list')">📝 Без описания</button><button class="ab" onclick="exportJSON()">📤 Резервная копия</button></div></div>
+   <div class="ac"><h4 class="font-bold mb-3">Последние действия</h4><div class="space-y-1 max-h-40 overflow-y-auto text-sm">${L.map(x=>`<div class="flex gap-3"><span class="mono text-[11px] text-gray-500 whitespace-nowrap">${fdate(x.t)}</span><span class="truncate">${esc(x.m)}</span></div>`).join("")||'<div class="text-gray-500">Пока пусто</div>'}</div></div>
   </div>`;
   if(!reduce){gsap.from("#pDash .ac",{y:20,opacity:0,stagger:.05,duration:.4,clearProps:"all"});document.querySelectorAll("#pDash .bar").forEach(b=>gsap.from(b,{width:0,duration:.8,ease:"power3.out"}))}
 }
@@ -610,12 +542,12 @@ function listData(){
   return a;
 }
 function rList(){
-  $("lq").value=adm.q;$("lcat").innerHTML=`<option value="">${t("flt_all")}</option>`+cats().map(c=>`<option value="${esc(c)}" ${adm.cat===c?"selected":""}>${esc(c)}</option>`).join("");
+  $("lq").value=adm.q;$("lcat").innerHTML='<option value="">Все категории</option>'+cats().map(c=>`<option value="${esc(c)}" ${adm.cat===c?"selected":""}>${esc(c)}</option>`).join("");
   $("lflt").value=adm.flt;$("lsort").value=adm.sort;rows();
 }
 function rows(){
   const a=listData();
-  $("lCount").textContent=`${a.length} / ${real().length}`;
+  $("lCount").textContent=`Показано ${a.length} из ${real().length}`;
   $("lAll").checked=a.length>0&&a.every(p=>sel.has(String(p.id)));
   $("bulk").classList.toggle("hidden",!sel.size);$("bulkN").textContent=sel.size;
   $("lRows").innerHTML=a.length?a.map(p=>{const i=jsq(p.id);return`<tr class="border-b border-white/5 hover:bg-white/[.03]">
@@ -625,45 +557,45 @@ function rows(){
   <td class="text-gray-400 hidden sm:table-cell">${esc(p.tag)}</td>
   <td><input type="number" step="0.01" min="0" value="${Number(p.price)}" class="ai w-24" onchange="quickPrice('${i}',this)"></td>
   <td><input type="checkbox" class="sw" ${p.isNew?"checked":""} onchange="quickNew('${i}',this.checked)"></td>
-  <td class="text-right whitespace-nowrap space-x-1"><button class="ab" title="Edit" onclick="editProduct('${i}')">✏️</button><button class="ab" title="Duplicate" onclick="dupProduct('${i}')">📋</button><button class="ab" title="View" onclick="viewProduct('${i}')">👁</button><button class="ab r" title="Delete" onclick="deleteProducts(['${i}'])">🗑️</button></td></tr>`}).join(""):`<tr><td colspan="7" class="py-10 text-center text-gray-500">${t("empty_text")}</td></tr>`;
+  <td class="text-right whitespace-nowrap space-x-1"><button class="ab" title="Изменить" onclick="editProduct('${i}')">✏️</button><button class="ab" title="Дублировать" onclick="dupProduct('${i}')">📋</button><button class="ab" title="Посмотреть на сайте" onclick="viewProduct('${i}')">👁</button><button class="ab r" title="Удалить" onclick="deleteProducts(['${i}'])">🗑️</button></td></tr>`}).join(""):'<tr><td colspan="7" class="py-10 text-center text-gray-500">Ничего не найдено</td></tr>';
 }
 function tg(i,on){on?sel.add(String(i)):sel.delete(String(i));rows()}
 function selAll(on){listData().forEach(p=>on?sel.add(String(p.id)):sel.delete(String(p.id)));rows()}
 function viewProduct(i){closeModals();setTimeout(()=>openProductModal(i),350)}
 async function quickPrice(i,el){
-  const v=parseFloat(el.value);if(!(v>=0)){toast("Error",true);return renderAdmin()}
+  const v=parseFloat(el.value);if(!(v>=0)){toast("Некорректная цена",true);return renderAdmin()}
   const{error}=await supabaseClient.from("products").update({price:v}).eq("id",i);if(error)return fail(error);
-  alog(`Price «${nm(i)}» → ${money(v)}`);toast(t("saved"));await sync();
+  alog(`Цена «${nm(i)}» → ${money(v)}`);toast("Цена обновлена ✅");await sync();
 }
 async function quickNew(i,on){
   const{error}=await supabaseClient.from("products").update({isNew:on}).eq("id",i);if(error)return fail(error);
-  alog(`${on?"NEW On":"NEW Off"}: ${nm(i)}`);await sync();
+  alog(`${on?"NEW вкл":"NEW выкл"}: ${nm(i)}`);await sync();
 }
 async function bulkSet(rec,msg){
   if(!sel.size)return;const{error}=await supabaseClient.from("products").update(rec).in("id",ids());if(error)return fail(error);
   alog(`${msg} (${sel.size})`);toast(msg+" ✅");await sync();
 }
-function bulkTag(){const v=$("bulkTag").value.trim();if(!v)return toast("Enter category",true);bulkSet({tag:v},"Tag: "+v)}
+function bulkTag(){const v=$("bulkTag").value.trim();if(!v)return toast("Введите категорию",true);bulkSet({tag:v},"Категория: "+v)}
 async function bulkPct(){
-  const pct=parseFloat($("bulkPct").value);if(!pct)return toast("Enter %",true);
-  const L=real().filter(p=>sel.has(String(p.id)));if(!confirm(`Apply ${pct}% to ${L.length} items?`))return;
+  const pct=parseFloat($("bulkPct").value);if(!pct)return toast("Введите процент, например -10 или 15",true);
+  const L=real().filter(p=>sel.has(String(p.id)));if(!confirm(`Изменить цену у ${L.length} товаров на ${pct>0?"+":""}${pct}%?`))return;
   const r=await Promise.all(L.map(p=>supabaseClient.from("products").update({price:Math.max(0,Math.round(p.price*(1+pct/100)*100)/100)}).eq("id",p.id)));
-  const e=r.find(x=>x.error);if(e)return fail(e.error);alog(`Price ${pct}% (${L.length})`);toast(t("saved"));$("bulkPct").value="";await sync();
+  const e=r.find(x=>x.error);if(e)return fail(e.error);alog(`Цена ${pct}% (${L.length})`);toast("Цены обновлены ✅");$("bulkPct").value="";await sync();
 }
 async function deleteProducts(list){
   const L=real().filter(p=>list.map(String).includes(String(p.id)));if(!L.length)return;
-  if(!confirm(t("confirm_del")))return;
+  if(!confirm(`Удалить товары: ${L.length}? Они попадут в корзину (Инструменты) — их можно вернуть.`))return;
   const{error}=await supabaseClient.from("products").delete().in("id",L.map(p=>p.id));if(error)return fail(error);
   const tr=ls("trash",[]);L.forEach(p=>tr.unshift({name:p.name,price:p.price,tag:p.tag,img:p.img,desc:p.desc,isNew:p.isNew,at:Date.now()}));lset("trash",tr.slice(0,100));
   L.forEach(p=>sel.delete(String(p.id)));if(L.some(p=>String(p.id)===$("productId").value))resetProductForm();
-  alog("Deleted: "+L.map(p=>p.name).join(", ").slice(0,80));toast(t("deleted"));await sync();
+  alog("Удалено: "+L.map(p=>p.name).join(", ").slice(0,80));toast("Перемещено в корзину 🗑️");await sync();
 }
 
 /* --- Форма товара --- */
 const markDirty=()=>{dirty=true;liveUpd()};
 function liveUpd(){
   const pr=parseFloat($("formPrice").value),p=$("preview");
-  $("lvName").textContent=$("formName").value.trim()||t("f_name");$("lvTag").textContent=$("formTag").value||t("f_tag");
+  $("lvName").textContent=$("formName").value.trim()||"Название товара";$("lvTag").textContent=$("formTag").value||"категория";
   $("lvPrice").textContent=isNaN(pr)?"—":money(pr);$("lvNew").classList.toggle("hidden",!$("formIsNew").checked);$("descN").textContent=$("formDesc").value.length;
   if(!p.classList.contains("hidden")&&p.src)$("lvImg").src=p.src;else $("lvImg").removeAttribute("src");
 }
@@ -679,15 +611,15 @@ async function procImg(file,crop,rotation,q=.85,max=1400){
   const k=Math.min(1,max/Math.max(cw,ch)),c=document.createElement("canvas");c.width=Math.round(cw*k);c.height=Math.round(ch*k);
   const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);
   x.scale(k,k);x.translate(-cx,-cy);x.translate(sw/2,sh/2);x.rotate(rotation*Math.PI/180);x.drawImage(bmp,-w/2,-h/2);
-  return new Promise((res,rej)=>c.toBlob(b=>b?res({blob:b,w:c.width,h:c.height}):rej(new Error("Image process failed")),"image/jpeg",q));
+  return new Promise((res,rej)=>c.toBlob(b=>b?res({blob:b,w:c.width,h:c.height}):rej(new Error("Не удалось обработать фото")),"image/jpeg",q));
 }
 async function refreshPreview(){
   if(!pendingFile)return;
-  try{const r=await procImg(pendingFile,$("cropOn").checked,rot);pendingBlob=r.blob;setPreview(URL.createObjectURL(r.blob));$("imgInfo").textContent=`${r.w}×${r.h} · ${kb(r.blob.size)}`}
-  catch(e){toast(t("not_img"),true);pendingFile=null;pendingBlob=null}
+  try{const r=await procImg(pendingFile,$("cropOn").checked,rot);pendingBlob=r.blob;setPreview(URL.createObjectURL(r.blob));$("imgInfo").textContent=`${r.w}×${r.h} · ${kb(r.blob.size)} (оригинал ${kb(pendingFile.size)})`}
+  catch(e){toast("Не удалось прочитать фото. Попробуйте JPG или PNG",true);pendingFile=null;pendingBlob=null}
 }
 function handleFile(f){if(!f)return;if(!f.type.startsWith("image/"))return toast(t("not_img"),true);pendingFile=f;rot=0;dirty=true;refreshPreview()}
-function rotImg(){if(!pendingFile)return toast(t("need_img"),true);rot=(rot+90)%360;refreshPreview()}
+function rotImg(){if(!pendingFile)return toast("Сначала выберите новое фото",true);rot=(rot+90)%360;refreshPreview()}
 function clearImage(){pendingFile=null;pendingBlob=null;existingImg="";rot=0;$("formFile").value="";$("imgInfo").textContent="";setPreview("");markDirty()}
 $("formFile").onchange=e=>handleFile(e.target.files[0]);
 [["drop",f=>handleFile(f[0])],["qdrop",f=>qaAdd(f)]].forEach(([id,fn])=>{const z=$(id);
@@ -695,12 +627,12 @@ $("formFile").onchange=e=>handleFile(e.target.files[0]);
   ["dragleave","drop"].forEach(ev=>z.addEventListener(ev,e=>{e.preventDefault();z.classList.remove("over")}));
   z.addEventListener("drop",e=>fn(e.dataTransfer.files))});
 document.addEventListener("paste",e=>{
-  if(!$("adminModal").classList.contains("active")\vert{}\vert{}$("adminDashboard").classList.contains("hidden"))return;
+  if(!$("adminModal").classList.contains("active")||$("adminDashboard").classList.contains("hidden"))return;
   const f=[...(e.clipboardData?e.clipboardData.files:[])].find(x=>x.type.startsWith("image/"));if(!f)return;e.preventDefault();
-  if(adm.tab==="quick")qaAdd([f]);else{setTab("edit");handleFile(f);toast("Image pasted 📋")}
+  if(adm.tab==="quick")qaAdd([f]);else{setTab("edit");handleFile(f);toast("Фото вставлено 📋")}
 });
 document.addEventListener("keydown",e=>{
-  if(!$("adminModal").classList.contains("active")\vert{}\vert{}$("adminDashboard").classList.contains("hidden"))return;
+  if(!$("adminModal").classList.contains("active")||$("adminDashboard").classList.contains("hidden"))return;
   if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="s"&&adm.tab==="edit"){e.preventDefault();saveProduct(null)}
   if(e.key==="/"&&adm.tab==="list"&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){e.preventDefault();$("lq").focus()}
 });
@@ -708,11 +640,11 @@ addEventListener("beforeunload",e=>{if(dirty){e.preventDefault();e.returnValue="
 function resetProductForm(){
   $("productForm").reset();$("productId").value="";$("formError").textContent="";pendingFile=null;pendingBlob=null;existingImg="";rot=0;dirty=false;$("imgInfo").textContent="";setPreview("");applyTranslations();rEdit();
 }
-function cancelEdit(){if(dirty&&!confirm("Discard unsaved changes?"))return;resetProductForm();setTab("list")}
+function cancelEdit(){if(dirty&&!confirm("Несохранённые изменения будут потеряны. Выйти?"))return;resetProductForm();setTab("list")}
 function fillForm(p,copy){
-  if(dirty&&!confirm("Discard unsaved changes?"))return;
-  resetProductForm();$("productId").value=copy?"":p.id;$("formName").value=copy?p.name+" (copy)":p.name;$("formPrice").value=p.price;$("formTag").value=p.tag||"";
-  $("formDesc").value=p.desc||"";$("formIsNew").checked=!!p.isNew;existingImg=p.img\vert{}\vert{}"";setPreview(existingImg);setTab("edit");applyTranslations();liveUpd();dirty=!!copy;$("formName").focus();
+  if(dirty&&!confirm("Несохранённые изменения будут потеряны. Продолжить?"))return;
+  resetProductForm();$("productId").value=copy?"":p.id;$("formName").value=copy?p.name+" (копия)":p.name;$("formPrice").value=p.price;$("formTag").value=p.tag||"";
+  $("formDesc").value=p.desc||"";$("formIsNew").checked=!!p.isNew;existingImg=p.img||"";setPreview(existingImg);setTab("edit");applyTranslations();liveUpd();dirty=!!copy;$("formName").focus();
 }
 function editProduct(i){const p=real().find(x=>String(x.id)===String(i));if(p)fillForm(p,false)}
 function dupProduct(i){const p=real().find(x=>String(x.id)===String(i));if(p)fillForm(p,true)}
@@ -729,12 +661,12 @@ async function removeStored(u,ex){
 }
 async function saveProduct(e,again){
   if(e)e.preventDefault();const er=$("formError");er.textContent="";
-  if(!isLive)return toast("Demo mode",true);
-  if(!pendingBlob&&!existingImg){er.textContent=t("need_img");return}
+  if(!isLive)return toast("Demo-режим",true);
+  if(!pendingBlob&&!existingImg){er.textContent="Загрузите фото товара";return}
   const price=parseFloat($("formPrice").value),name=$("formName").value.trim(),id=$("productId").value;
-  if(!name||isNaN(price)||price<0){er.textContent="Check fields";return}
-  if(real().some(p=>String(p.id)!==id&&(p.name||"").trim().toLowerCase()===name.toLowerCase())&&!confirm("Duplicate name exist. Continue?"))return;
-  const btns=[...document.querySelectorAll("#productForm .sbtn")],lab=btns.map(b=>b.textContent);btns.forEach(b=>{b.disabled=true;b.textContent=t("uploading")});
+  if(!name||isNaN(price)||price<0){er.textContent="Проверьте название и цену";return}
+  if(real().some(p=>String(p.id)!==id&&(p.name||"").trim().toLowerCase()===name.toLowerCase())&&!confirm("Товар с таким названием уже есть. Сохранить всё равно?"))return;
+  const btns=[...document.querySelectorAll("#productForm .sbtn")],lab=btns.map(b=>b.textContent);btns.forEach(b=>{b.disabled=true;b.textContent="Загрузка..."});
   try{
     let img=existingImg;if(pendingBlob)img=await upload(pendingBlob);
     const rec={name,price,tag:$("formTag").value.trim(),img,desc:$("formDesc").value.trim(),isNew:$("formIsNew").checked};
@@ -742,7 +674,7 @@ async function saveProduct(e,again){
     const r=id?await supabaseClient.from("products").update(rec).eq("id",id):await supabaseClient.from("products").insert(rec);
     if(r.error)throw r.error;
     if(old&&old!==img)removeStored(old,id);
-    alog((id?"Updated: ":"Added: ")+name);resetProductForm();await sync();toast(t("saved"));
+    alog((id?"Изменён: ":"Добавлен: ")+name);resetProductForm();await sync();toast("Сохранено ✅");
     if(again)$("formName").focus();else setTab("list");
   }catch(x){fail(x);er.textContent=x.message||String(x)}
   btns.forEach((b,i)=>{b.disabled=false;b.textContent=lab[i]});
@@ -759,51 +691,52 @@ function qaApply(){qa.forEach(r=>{if($("qPrice").value)r.price=$("qPrice").value
 function rQuick(){
   $("qRows").innerHTML=qa.map((r,i)=>`<div class="ac flex flex-wrap items-center gap-2 !p-2 ${r.st==="ok"?"border-[var(--accent)]/50":r.st&&r.st!=="..."?"border-red-500/50":""}">
   <img src="${r.url}" class="w-12 h-14 rounded-lg object-cover" alt="">
-  <input class="ai flex-1 min-w-[140px]" value="${esc(r.name)}" placeholder="${t('f_name')}" oninput="qa[${i}].name=this.value">
-  <input type="number" step="0.01" class="ai w-24" value="${esc(r.price)}" placeholder="${t('f_price')}" oninput="qa[${i}].price=this.value">
-  <input list="tagList" class="ai w-32" value="${esc(r.tag)}" placeholder="${t('f_tag')}" oninput="qa[${i}].tag=this.value">
+  <input class="ai flex-1 min-w-[140px]" value="${esc(r.name)}" placeholder="Название" oninput="qa[${i}].name=this.value">
+  <input type="number" step="0.01" class="ai w-24" value="${esc(r.price)}" placeholder="Цена" oninput="qa[${i}].price=this.value">
+  <input list="tagList" class="ai w-32" value="${esc(r.tag)}" placeholder="Категория" oninput="qa[${i}].tag=this.value">
   <label class="flex items-center gap-1 text-xs">NEW <input type="checkbox" class="sw" ${r.isNew?"checked":""} onchange="qa[${i}].isNew=this.checked"></label>
-  <span class="text-xs w-24 text-gray-400">${esc(r.st==="ok"?"✅ OK":r.st)}</span><button class="ab r" onclick="qa.splice(${i},1);rQuick()">✕</button></div>`).join("");
-  $("qSave").textContent=qa.length?`💾 ${t('save_all')} (${qa.length})`:`💾 ${t('save_all')}`;
+  <span class="text-xs w-24 text-gray-400">${esc(r.st==="ok"?"✅ готово":r.st)}</span><button class="ab r" onclick="qa.splice(${i},1);rQuick()">✕</button></div>`).join("");
+  $("qSave").textContent=qa.length?`💾 Сохранить все (${qa.length})`:"💾 Сохранить все";
 }
 async function qaSave(){
   if(qaBusy||!qa.length||!isLive)return;qaBusy=true;$("qSave").disabled=true;let done=0;
   for(const r of qa){
     $("qProg").style.width=(done/qa.length*100)+"%";
-    if(!r.name.trim()||!(parseFloat(r.price)>=0)||!r.tag.trim()){r.st="check fields";rQuick();continue}
+    if(!r.name.trim()||!(parseFloat(r.price)>=0)||!r.tag.trim()){r.st="заполните поля";rQuick();continue}
     try{r.st="...";rQuick();const b=await procImg(r.f,$("qCrop").checked,0),img=await upload(b.blob);
       const x=await supabaseClient.from("products").insert({name:r.name.trim(),price:parseFloat(r.price),tag:r.tag.trim(),img,desc:"",isNew:r.isNew});
-      if(x.error)throw x.error;r.st="ok";done++}catch(e){r.st="error";fail(e)}
+      if(x.error)throw x.error;r.st="ok";done++}catch(e){r.st="ошибка";fail(e)}
   }
-  $("qProg").style.width="100%";if(done)alog(`Bulk upload: ${done}`);
+  $("qProg").style.width="100%";if(done)alog(`Быстрая загрузка: ${done} товаров`);
   qa=qa.filter(r=>r.st!=="ok");qaBusy=false;$("qSave").disabled=false;await sync();
-  if(done)toast(`${t('saved')}: ${done}`);setTimeout(()=>$("qProg").style.width="0",1200);
+  if(done)toast(`Добавлено товаров: ${done} ✅`);setTimeout(()=>$("qProg").style.width="0",1200);
 }
 
 /* --- Категории --- */
 function rCats(){
   const P=real();
-  $("pCats").innerHTML=cats().map(c=>{const e=encodeURIComponent(c);return`<div class="ac flex flex-wrap items-center gap-2"><div class="flex-1 min-w-[120px]"><b>${esc(c)}</b><div class="text-xs text-gray-500">${P.filter(p=>p.tag===c).length} items</div></div>
-  <input class="ai w-40" value="${esc(c)}"><button class="ab" onclick="renCat('${e}',this.previousElementSibling.value)">Rename</button><button class="ab" onclick="goCat('${e}')">Show</button></div>`}).join("")||`<div class="ac text-gray-500 md:col-span-2">${t("no_data")}</div>`;
+  $("pCats").innerHTML=cats().map(c=>{const e=encodeURIComponent(c);return`<div class="ac flex flex-wrap items-center gap-2"><div class="flex-1 min-w-[120px]"><b>${esc(c)}</b><div class="text-xs text-gray-500">${P.filter(p=>p.tag===c).length} товаров</div></div>
+  <input class="ai w-40" value="${esc(c)}"><button class="ab" onclick="renCat('${e}',this.previousElementSibling.value)">Переименовать</button><button class="ab" onclick="goCat('${e}')">Показать</button></div>`}).join("")||'<div class="ac text-gray-500 md:col-span-2">Категорий пока нет</div>';
+  if($("pCats").innerHTML&&cats().length)$("pCats").insertAdjacentHTML("beforeend",'<p class="text-xs text-gray-500 md:col-span-2">💡 Чтобы объединить категории, переименуйте одну в название другой.</p>');
 }
 async function renCat(old,v){
   old=decodeURIComponent(old);v=v.trim();if(!v||v===old)return;
-  if(cats().includes(v)&&!confirm(`Category «${v}» exists. Merge?`))return;
+  if(cats().includes(v)&&!confirm(`Категория «${v}» уже есть. Объединить?`))return;
   const{error}=await supabaseClient.from("products").update({tag:v}).eq("tag",old);if(error)return fail(error);
-  alog(`Category «${old}» → «${v}»`);toast(t("saved"));await sync();
+  alog(`Категория «${old}» → «${v}»`);toast("Категория обновлена ✅");await sync();
 }
 
 /* --- Инструменты --- */
 function rTools(){
   const tr=ls("trash",[]);
-  $("trashList").innerHTML=tr.map((x,i)=>`<div class="flex items-center gap-3 text-sm"><img src="${esc(x.img)}" class="w-9 h-11 rounded object-cover bg-white/5" alt=""><div class="flex-1 min-w-0"><div class="truncate font-bold">${esc(x.name)}</div><div class="text-xs text-gray-500">${money(x.price)} · ${fdate(x.at)}</div></div><button class="ab g" onclick="restoreItem(${i})">${t("restore_btn")}</button><button class="ab r" onclick="purgeItem(${i})">${t("purge_btn")}</button></div>`).join("")||`<div class="text-sm text-gray-500">${t("no_data")}</div>`;
+  $("trashList").innerHTML=tr.map((x,i)=>`<div class="flex items-center gap-3 text-sm"><img src="${esc(x.img)}" class="w-9 h-11 rounded object-cover bg-white/5" alt=""><div class="flex-1 min-w-0"><div class="truncate font-bold">${esc(x.name)}</div><div class="text-xs text-gray-500">${money(x.price)} · ${fdate(x.at)}</div></div><button class="ab g" onclick="restoreItem(${i})">↩ Вернуть</button><button class="ab r" onclick="purgeItem(${i})">Навсегда</button></div>`).join("")||'<div class="text-sm text-gray-500">Корзина пуста</div>';
 }
 function download(n,text,type){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type}));a.download=n;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 const stamp=()=>new Date().toISOString().slice(0,10);
-function exportJSON(){download(`50cent-products-${stamp()}.json`,JSON.stringify(real().map(({id,...r})=>r),null,2),"application/json");alog("Export JSON");toast(t("saved"))}
+function exportJSON(){download(`50cent-products-${stamp()}.json`,JSON.stringify(real().map(({id,...r})=>r),null,2),"application/json");alog("Экспорт JSON");toast("Файл скачан 📤")}
 function exportCSV(){
   const q=v=>'"'+String(v??"").replace(/"/g,'""')+'"',H=["name","price","tag","img","desc","isNew"];
-  download(`50cent-products-${stamp()}.csv`,"\ufeff"+[H.join(","),...real().map(p=>H.map(k=>q(p[k])).join(","))].join("\n"),"text/csv;charset=utf-8");alog("Export CSV");toast(t("saved"));
+  download(`50cent-products-${stamp()}.csv`,"\ufeff"+[H.join(","),...real().map(p=>H.map(k=>q(p[k])).join(","))].join("\n"),"text/csv;charset=utf-8");alog("Экспорт CSV");toast("Файл скачан 📤");
 }
 function parseCSV(t){
   const rows=[];let r=[],c="",q=false;
@@ -816,47 +749,47 @@ function parseCSV(t){
 async function impRead(f){
   if(!f)return;const txt=(await f.text()).replace(/^\ufeff/,"");let arr=[];
   try{if(/\.json$/i.test(f.name))arr=JSON.parse(txt);else{const R=parseCSV(txt),H=R.shift().map(x=>x.trim());arr=R.map(r=>Object.fromEntries(H.map((h,i)=>[h,r[i]])))}}
-  catch(e){return toast("Failed to parse file",true)}
-  imp=arr.filter(x=>x&&x.name).map(x=>({name:String(x.name).trim(),price:parseFloat(x.price)||0,tag:String(x.tag||"").trim(),img:String(x.img||""),desc:String(x.desc||""),isNew:[true,"true","1","da","yes"].includes(typeof x.isNew==="string"?x.isNew.toLowerCase():x.isNew)}));
-  $("impInfo").innerHTML=imp.length?`Found items: <b>${imp.length}</b> <button class="ab g ml-2" onclick="impRun()">Import</button>`:"No items found";
+  catch(e){return toast("Не удалось прочитать файл",true)}
+  imp=arr.filter(x=>x&&x.name).map(x=>({name:String(x.name).trim(),price:parseFloat(x.price)||0,tag:String(x.tag||"").trim(),img:String(x.img||""),desc:String(x.desc||""),isNew:[true,"true","1","да","yes"].includes(typeof x.isNew==="string"?x.isNew.toLowerCase():x.isNew)}));
+  $("impInfo").innerHTML=imp.length?`Найдено товаров: <b>${imp.length}</b> <button class="ab g ml-2" onclick="impRun()">Импортировать</button>`:"Подходящих строк не найдено";
 }
 async function impRun(){
-  if(!imp.length||!confirm(`Import ${imp.length} items?`))return;
+  if(!imp.length||!confirm(`Добавить товаров: ${imp.length}?`))return;
   const{error}=await supabaseClient.from("products").insert(imp);if(error)return fail(error);
-  alog(`Imported: ${imp.length}`);toast(t("saved"));imp=[];$("impInfo").textContent="";await sync();
+  alog(`Импорт: ${imp.length} товаров`);toast("Импорт завершён ✅");imp=[];$("impInfo").textContent="";await sync();
 }
 async function findOrphans(){
-  const el=$("orphans");el.textContent="Scanning...";
+  const el=$("orphans");el.textContent="Поиск...";
   const{data,error}=await supabaseClient.storage.from(BUCKET).list("products",{limit:1000});if(error){el.textContent="";return fail(error)}
   const used=new Set([...real(),...ls("trash",[])].map(p=>pathFromUrl(p.img)).filter(Boolean));
   orph=(data||[]).filter(f=>f.id&&!used.has("products/"+f.name));
-  el.innerHTML=orph.length?`Unused files: <b>${orph.length}</b> (${kb(orph.reduce((a,f)=>a+((f.metadata&&f.metadata.size)||0),0))}) <button class="ab r ml-2" onclick="delOrphans()">${t("btn_delete")}</button>`:"No unused files ✅";
+  el.innerHTML=orph.length?`Лишних файлов: <b>${orph.length}</b> (${kb(orph.reduce((a,f)=>a+((f.metadata&&f.metadata.size)||0),0))}) <button class="ab r ml-2" onclick="delOrphans()">Удалить</button>`:"Лишних файлов нет ✅";
 }
 async function delOrphans(){
-  if(!orph.length||!confirm(`Delete ${orph.length} files permanently?`))return;
+  if(!orph.length||!confirm(`Удалить файлов: ${orph.length}? Это нельзя отменить.`))return;
   const{error}=await supabaseClient.storage.from(BUCKET).remove(orph.map(f=>"products/"+f.name));if(error)return fail(error);
-  alog(`Cleaned storage: ${orph.length}`);toast(t("saved"));orph=[];$("orphans").textContent="OK ✅";
+  alog(`Очистка хранилища: ${orph.length} файлов`);toast("Хранилище очищено 🧹");orph=[];$("orphans").textContent="Готово ✅";
 }
 async function changePass(){
-  const v=$("newPass").value;if(v.length<6)return toast("Min 6 chars",true);
+  const v=$("newPass").value;if(v.length<6)return toast("Минимум 6 символов",true);
   const{error}=await supabaseClient.auth.updateUser({password:v});if(error)return fail(error);
-  $("newPass").value="";alog("Password changed");toast(t("saved"));
+  $("newPass").value="";alog("Пароль изменён");toast("Пароль изменён 🔑");
 }
 async function restoreItem(i){
   const tr=ls("trash",[]),x=tr[i];if(!x)return;const{at,...rec}=x;
   const{error}=await supabaseClient.from("products").insert(rec);if(error)return fail(error);
-  tr.splice(i,1);lset("trash",tr);alog("Restored: "+x.name);toast(t("saved"));await sync();
+  tr.splice(i,1);lset("trash",tr);alog("Восстановлен: "+x.name);toast("Товар возвращён ↩");await sync();
 }
 function purgeItem(i){
-  const tr=ls("trash",[]),x=tr[i];if(!x||!confirm(`Delete «${x.name}» permanently?`))return;
+  const tr=ls("trash",[]),x=tr[i];if(!x||!confirm(`Удалить «${x.name}» навсегда вместе с фото?`))return;
   tr.splice(i,1);lset("trash",tr);removeStored(x.img,"");rTools();
 }
 function clearTrash(){
-  const tr=ls("trash",[]);if(!tr.length||!confirm("Clear trash permanently?"))return;
-  lset("trash",[]);tr.forEach(x=>removeStored(x.img,""));rTools();toast(t("saved"));
+  const tr=ls("trash",[]);if(!tr.length||!confirm(`Очистить корзину (${tr.length}) навсегда?`))return;
+  lset("trash",[]);tr.forEach(x=>removeStored(x.img,""));rTools();toast("Корзина очищена");
 }
 
-/* ===== ANIMATIONS & INIT ===== */
+/* ===== ANIMATIONS ===== */
 function setupMarquee(){
   const ic=n=>`<svg class="ic inline-block w-9 h-8" viewBox="0 0 120 100"><use href="#${n}"/></svg>`,I=["tee","hoodie","pants","cap"];
   const mk=a=>{const r=a.map((x,i)=>`<span>${x}</span>${ic(I[i%4])}`).join("");return Array(8).fill(`<span class="flex items-center gap-12">${r}</span>`).join("")};
@@ -868,11 +801,13 @@ function makeFloaters(){
   $("floaters").innerHTML=L.map(([n,x,y,w,r,d])=>`<div class="fw absolute" style="left:${x}%;top:${y}%"><svg class="ic fi" style="width:${w}px;--r:${r}deg;--t:${d}s" viewBox="0 0 120 100"><use href="#${n}"/></svg></div>`).join("");
 }
 function initMotion(){
+  // курсор
   if(matchMedia("(pointer:fine)").matches){
     const cx=gsap.quickTo("#cursor","x",{duration:.35,ease:"power3"}),cy=gsap.quickTo("#cursor","y",{duration:.35,ease:"power3"});
     addEventListener("mousemove",e=>{cx(e.clientX);cy(e.clientY);gsap.set("#cursorDot",{x:e.clientX,y:e.clientY})});
     document.addEventListener("mouseover",e=>$("cursor").classList.toggle("hovered",!!e.target.closest("a,button,input,select,label,.card-p")));
   }
+  // шапка + прогресс
   let last=0;addEventListener("scroll",()=>{
     const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
     $("progress").style.transform=`scaleX(${h>0?y/h:0})`;
@@ -883,29 +818,51 @@ function initMotion(){
     document.querySelectorAll(".fw").forEach((n,i)=>gsap.to(n,{x:x*(30+i*14),y:y*(20+i*10),duration:1.2,overwrite:"auto"}))});
   gsap.utils.toArray(".cut").forEach(c=>{const d=c.querySelector(".cut-d"),k=c.querySelector(".cut-s");
     gsap.timeline({scrollTrigger:{trigger:c,start:"top 88%",end:"top 40%",scrub:1}}).fromTo(d,{width:0},{width:"100%",ease:"none"}).fromTo(k,{left:0},{left:"100%",ease:"none"},0)});
+  // секционные reveal
   gsap.utils.toArray(".reveal").forEach(el=>gsap.from(el,{y:50,opacity:0,duration:.9,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 88%"}}));
+  // параллакс орбов
   gsap.utils.toArray(".orb").forEach((o,i)=>gsap.to(o,{y:i?-120:120,scrollTrigger:{trigger:"main",start:"top top",end:"+=900",scrub:1}}));
+  // бегущие строки реагируют на скролл
   gsap.to("#mq1",{x:-200,scrollTrigger:{trigger:"#mq1",scrub:1}});
+  // магнитные кнопки
   document.querySelectorAll(".mag").forEach(b=>{
     b.addEventListener("mousemove",e=>{const r=b.getBoundingClientRect();gsap.to(b,{x:(e.clientX-r.left-r.width/2)*.25,y:(e.clientY-r.top-r.height/2)*.35,duration:.3})});
     b.addEventListener("mouseleave",()=>gsap.to(b,{x:0,y:0,duration:.6,ease:"elastic.out(1,.4)"}));
   });
+  // 3D-наклон hero-карточки
+  const hc=$("heroCard");
+  hc.addEventListener("mousemove",e=>{const r=hc.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;gsap.to(hc,{rotateY:x*14,rotateX:-y*14,transformPerspective:900,duration:.4})});
+  hc.addEventListener("mouseleave",()=>gsap.to(hc,{rotateY:0,rotateX:0,duration:.8,ease:"elastic.out(1,.5)"}));
+  // наклон и подсветка карточек товаров (делегирование)
+  const grid=$("productsGrid");
+  grid.addEventListener("mousemove",e=>{const c=e.target.closest(".card-p");if(!c)return;const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+    c.style.setProperty("--mx",x*100+"%");c.style.setProperty("--my",y*100+"%");gsap.to(c,{rotateY:(x-.5)*10,rotateX:-(y-.5)*10,transformPerspective:800,duration:.3})});
+  grid.addEventListener("mouseout",e=>{const c=e.target.closest(".card-p");if(c&&!c.contains(e.relatedTarget))gsap.to(c,{rotateY:0,rotateX:0,duration:.6,ease:"power3.out"})});
+}
+function splitChars(){
+  document.querySelectorAll("#heroTitle>span").forEach(s=>{
+    const txt=s.textContent;s.innerHTML=[...txt].map(c=>`<span class="char">${c===" "?"&nbsp;":c}</span>`).join("");
+    if(s.classList.contains("bg-clip-text"))s.querySelectorAll(".char").forEach(c=>{c.style.background="inherit";c.style.webkitBackgroundClip="text";c.style.backgroundClip="text"});
+  });
+}
+function intro(){
+  const done=()=>{$("preloader").remove();document.querySelectorAll(".count[data-to]:not(#prodCount)").forEach(c=>gsap.to(c,{innerText:+c.dataset.to,duration:1.6,snap:{innerText:1},ease:"power2.out",delay:.6}))};
+  if(reduce){done();return}
+  const tl=gsap.timeline({onComplete:done});
+  tl.to("#plBar",{width:"100%",duration:.9,ease:"power2.inOut"})
+    .to("#preloader",{yPercent:-100,duration:.8,ease:"power4.inOut"})
+    .from("#heroTitle .char",{yPercent:120,rotate:8,opacity:0,duration:.8,stagger:.03,ease:"back.out(1.6)"},"-=.3")
+    .from(".hero-in",{y:40,opacity:0,duration:.8,stagger:.1,ease:"power3.out"},"-=.6")
+    .from("#nav",{yPercent:-100,duration:.6,ease:"power3.out"},"-=.8");
 }
 
-document.addEventListener("DOMContentLoaded",async()=>{
-  renderLanguageSwitcher();
-  applyTranslations();
-  setupMarquee();
-  makeFloaters();
-  initMotion();
-  updateCartCount();
-  await loadProducts();
-  gsap.to("#plBar",{width:"100%",duration:.5,onComplete:()=>{
-    gsap.to("#preloader",{opacity:0,duration:.4,onComplete:()=>{$("preloader").style.display="none";
-      gsap.from(".hero-in",{y:40,opacity:0,stagger:.12,duration:.9,ease:"power3.out"});
-    }});
-  }});
-});
+/* ===== START ===== */
+function initApp(){
+  renderLanguageSwitcher();applyTranslations();setupMarquee();makeFloaters();splitChars();
+  updateCartCount();loadProducts();initMotion();intro();
+  setTimeout(()=>{if($("preloader"))$("preloader").remove()},6000);
+}
+initApp();
 </script>
 </body>
 </html>
